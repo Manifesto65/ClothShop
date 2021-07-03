@@ -1,0 +1,249 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="header">
+    <div class="container" style="margin-bottom: -22px;">
+        <div class="row">
+            <div class="col-2">
+                <h1>Nepal's NO,1 Clothing Brand!</h1>
+                <p>We must have fashion attitude first to modernize our world so,<br>Wear With Comfort</p>
+                <a href=""class="b1">Explore Now &#8594 </a>
+            </div>
+            <div class="col-2">
+                <img src="{% static 'images/cover.jpg' %}">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!------featured categories----->
+   <div class="categories">
+      <div class="small-container">
+        <div class="row">
+            <div class="col-3">
+                <img src="photos/img1.jpg">
+            </div>
+            <div class="col-3">
+             <img src="photos/img2.jpg">
+            </div>
+            <div class="col-3">
+                <img src="photos/img3.jpg">
+            </div>
+        </div>
+
+      </div>
+
+   </div>
+
+<!------featured products----->
+  <div class="small-container">
+      <h2 class="title">Featured Products</h2>
+      <div class="row">
+          <div class="col-4">
+              <a href="product-details.html"><img src="photos/img4.jpg">
+              </a>
+              <a href="product-details.html"><h4>Crop T-shirt</h4>
+                </a>
+              <div class="rating">
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star-o"></i>
+
+              </div>
+              <p>$1050.00</p>
+          </div>
+          <div class="col-4">
+            <img src="photos/img5.jpg">
+            <h4>Printed Full T-shirt</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+
+            </div>
+            <p>$1550.00</p>
+        </div>
+        <div class="col-4">
+            <img src="photos/img6.jpg">
+            <h4>Plain T-shirt</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+
+            </div>
+            <p>$850.00</p>
+        </div>
+        <div class="col-4">
+            <img src="photos/img7.jpg">
+            <h4>Trouser</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+
+            </div>
+            <p>$1250.00</p>
+        </div>
+      </div>
+      <h2 class="title">Latest Produts</h2>
+      <div class="row">
+
+
+      {%for l in latest %}
+      <div class="col-4">
+          <img src="{{l.image.url}}">
+          <h4>{{l.title}}</h4>
+          <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>
+
+          </div>
+          <p>${{l.price}}</p>
+
+
+      </div>
+          {% endfor%}
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <img src="photos/img12.jpg">
+            <h4>Crop T-shirt</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+
+            </div>
+            <p>$1050.00</p>
+        </div>
+        <div class="col-4">
+          <img src="photos/img13.jpg">
+          <h4>Printed Full T-shirt</h4>
+          <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+
+          </div>
+          <p>$1550.00</p>
+      </div>
+      <div class="col-4">
+          <img src="photos/img14.jpg">
+          <h4>Plain T-shirt</h4>
+          <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o"></i>
+
+          </div>
+          <p>$850.00</p>
+      </div>
+      <div class="col-4">
+          <img src="photos/img15.jpg">
+          <h4>Trouser</h4>
+          <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>
+
+          </div>
+          <p>$1250.00</p>
+      </div>
+    </div>
+  </div>
+  <!----offer---->
+  <div class="=offer">
+      <div class="small-container">
+          <div class="row">
+              <div class="col-2">
+                  <img src="photos/img16.jpg"class="offer-img">
+              </div>
+              <div class="col-2">
+                  <p>Exclusively Available on Necked Express</p>
+                  <h1>Smart Band 4</h1>
+                  <small>The Mi Smart Band 4 features a 1.1 large AMOLED display with activity tracking and adjustable brightness,so everything is clear and comfortable.</small>
+                  <a href="" class="b1">Buy Now &#8594;</a>
+              </div>
+          </div>
+      </div>
+
+  </div>
+
+ <!-----testimonial----->
+  <div class="testimonial">
+      <div class="small-container">
+          <div class="row">
+              <div class="col-3">
+                  <i class="fa fa-quote-left"></i>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting.Lorem Ipsum has been the industry's dummy text ever</p>
+                  <div class="rating">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+              </div>
+              <img src="photos/img17.jpg">
+              <h3>Hari Acharya</h3>
+          </div>
+          <div class="col-3">
+            <i class="fa fa-quote-left"></i>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting.Lorem Ipsum has been the industry's dummy text ever</p>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-o"></i>
+        </div>
+        <img src="photos/img18.jpg">
+        <h3>Bibel Kr Labh</h3>
+    </div>
+    <div class="col-3">
+        <i class="fa fa-quote-left"></i>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting.Lorem Ipsum has been the industry's dummy text ever</p>
+        <div class="rating">
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-o"></i>
+    </div>
+    <img src="photos/img19.jpg">
+    <h3>Bimal Gautam</h3>
+</div>
+      </div>
+  </div>
+
+  <!------brands------>
+
+
+
+
+
+
+
+
+
+{% endblock content %}
