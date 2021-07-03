@@ -23,7 +23,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['title', 'price', 'discount_price', 'category', 'description', 'image']
     search_fields = ['title']
-
+    list_filter = ['is_featured', 'is_latest', 'is_exclusive']
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)

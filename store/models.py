@@ -33,6 +33,9 @@ class Product(models.Model):
     description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='uploads/products/')
+    is_featured = models.BooleanField(default=False)
+    is_latest = models.BooleanField(default=False)
+    is_exclusive = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
