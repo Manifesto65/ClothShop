@@ -15,3 +15,7 @@ def index(request):
 
 def home(request):
     return HttpResponse("hello")
+
+
+def login(request):
+    return render(request, "login.html")
