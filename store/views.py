@@ -5,8 +5,10 @@ from .models import Product
 
 def index(request):
     latest = Product.objects.filter(is_latest = True)
+    exclusive = Product.objects.get(is_exclusive=True)
     data ={
-        'latest':latest
+        'latest':latest,
+        'exclusive':exclusive
     }
     return render(request, "landing_page.html",data)
 
