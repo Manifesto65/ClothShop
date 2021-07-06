@@ -10,7 +10,12 @@ def index(request):
     data ={
         'latest':latest,
         'exclusive':exclusive,
+<<<<<<< HEAD
         'featured':featured,
+=======
+        'featured':featured
+
+>>>>>>> cef6260acd4411fe25df93870986c014efbe16a3
 
     }
     return render(request, "landing_page.html",data)
