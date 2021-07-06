@@ -40,50 +40,10 @@
   <div class="small-container">
       <h2 class="title">Featured Products</h2>
       <div class="row">
-          <div class="col-4">
-              <a href="product-details.html"><img src="photos/img4.jpg">
-              </a>
-              <a href="product-details.html"><h4>Crop T-shirt</h4>
-                </a>
-              <div class="rating">
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star"></i>
-                  <i class="fa fa-star-o"></i>
-
-              </div>
-              <p>$1050.00</p>
-          </div>
-          <div class="col-4">
-            <img src="photos/img5.jpg">
-            <h4>Printed Full T-shirt</h4>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
-
-            </div>
-            <p>$1550.00</p>
-        </div>
+        {%for f in featured%}
         <div class="col-4">
-            <img src="photos/img6.jpg">
-            <h4>Plain T-shirt</h4>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
-
-            </div>
-            <p>$850.00</p>
-        </div>
-        <div class="col-4">
-            <img src="photos/img7.jpg">
-            <h4>Trouser</h4>
+            <img src="{{f.image.url}}">
+            <h4>{{f.title}}</h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
@@ -92,8 +52,11 @@
                 <i class="fa fa-star-o"></i>
 
             </div>
-            <p>$1250.00</p>
+            <p>${{f.price}}</p>
         </div>
+          {%endfor%}
+
+
       </div>
       <h2 class="title">Latest Produts</h2>
       <div class="row">
