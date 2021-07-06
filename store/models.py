@@ -32,10 +32,18 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
-    image = models.ImageField(upload_to='uploads/products/')
+    image = models.ImageField(upload_to='uploads/products/',blank=True)
     is_featured = models.BooleanField(default=False)
     is_latest = models.BooleanField(default=False)
     is_exclusive = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title
+
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, default=None, on_delete=models.CASCADE)
+    images = models.FileField(upload_to='uploads/products/')
+
+    def __str__(self):
+        return self.product.title

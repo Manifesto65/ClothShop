@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, User, UserProfile
+from .models import Category, Product, User, UserProfile,ProductImage
 from django.forms import Textarea
 from django.db import models
 
@@ -15,6 +15,11 @@ class ProductInline(admin.TabularInline):
     # }
 
 
+class ProductImageAdmin(admin.StackedInline):
+    model = ProductImage
+
+
+
 class CategoryAdmin(admin.ModelAdmin):
     model = Category
     inlines = [ProductInline]
@@ -24,6 +29,11 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ['title', 'price', 'discount_price', 'category', 'description', 'image']
     search_fields = ['title']
     list_filter = ['is_featured', 'is_latest', 'is_exclusive']
+    inlines = [ProductImageAdmin]
+
+    class Meta:
+        model = Product
+
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
