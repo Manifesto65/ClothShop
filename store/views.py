@@ -7,12 +7,10 @@ def index(request):
     latest = Product.objects.filter(is_latest = True)
     exclusive = Product.objects.get(is_exclusive=True)
     featured = Product.objects.filter(is_featured=True)
-    all= Product.objects.filter(is_all=True)
     data ={
         'latest':latest,
         'exclusive':exclusive,
-        'featured':featured,
-        'all':all
+        'featured':featured
     }
     return render(request, "landing_page.html",data)
 
