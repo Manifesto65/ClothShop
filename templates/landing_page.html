@@ -18,7 +18,7 @@
 
 
 <!------brands------>
-   <div class="brand">
+   <div class="brand mt-5">
       <div class="small-container">
         <div class="row">
             <div class="col-3">
@@ -42,8 +42,8 @@
       <div class="row">
         {%for f in featured%}
         <div class="col-4">
-            <img src="{{f.image.url}}">
-            <h4>{{f.title}}</h4>
+            <a href="{% url 'store:product-detail' f.id %}">  <img src="{{f.image.url}}"></a>
+            <a href="{% url 'store:product-detail' f.id %}">  <h4>{{f.title}}</h4> </a>
             <div class="rating">
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
@@ -64,8 +64,8 @@
 
       {%for l in latest %}
       <div class="col-4">
-          <img src="{{l.image.url}}">
-          <h4>{{l.title}}</h4>
+          <a href="{% url 'store:product-detail' l.id %}"> <img src="{{l.image.url}}"></a>
+          <a href="{% url 'store:product-detail' l.id %}">  <h4>{{l.title}}</h4></a>
           <div class="rating">
               <i class="fa fa-star"></i>
               <i class="fa fa-star"></i>
@@ -87,11 +87,11 @@
       <div class="small-container">
           <div class="row">
               <div class="col-2">
-                  <img src="{{exclusive.image.url}}"class="offer-img">
+                  <a href="{% url 'store:product-detail' exclusive.id %}"> <img src="{{exclusive.image.url}}"class="offer-img"></a>
               </div>
               <div class="col-2">
                   <p>Exclusively Available on Necked Express</p>
-                  <h1>{{exclusive.title}}</h1>
+                  <a href="{% url 'store:product-detail' exclusive.id %}"> <h1>{{exclusive.title}}</h1></a>
                   <small>{{exclusive.description}}</small>
                   <a href="" class="b1">Buy Now &#8594;</a>
               </div>

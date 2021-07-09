@@ -15,24 +15,32 @@
                 <p>ClothShop</p>
                 </div>
                  <h4 class="mt-3" >Sign into your account</h4>
-                 <form action="">
+
+                 <form method="post">
+                     {% csrf_token %}
                      <div class="form-row">
                          <div class="col-lg-7">
-                             <input type="email" placeholder="Email-Address" class="form-control my-3 p-4">
+                             <input type="text" placeholder="Username" value="{{value.user}}" name="user" class="form-control my-3 p-4">
                          </div>
                      </div>
                      <div class="form-row">
                          <div class="col-lg-7">
-                             <input type="password" placeholder="*****" class="form-control my-3 p-4">
+                             <input type="password" placeholder="*********" name="pass" class="form-control my-3 p-4">
                          </div>
                      </div>
                      <div class="form-row">
                          <div class="col-lg-7">
-                             <button type="button" class="fbtn mt-3 mb-5 ">Login</button>
+                             <button type="submit" class="fbtn mt-3 mb-5 ">Login</button>
                          </div>
                      </div>
+                     {%if error%}
+                     <p class="text-danger">{{error}}</p>
+
+                     {% endif %}
                      <a style="font-size:15px" href="#">Forget password</a>
-                     <p style="font-size:17px">Don't have an account? <a style="font-size:15px" href="#">Register Here</a></p>
+                     <p style="font-size:17px">Don't have an account? <a style="font-size:15px" href="{% url 'signup' %}">Register Here</a></p>
+
+
 
 
 

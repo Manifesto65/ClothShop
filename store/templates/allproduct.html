@@ -1,0 +1,259 @@
+{% extends 'base.html' %}
+
+{%block content %}
+
+<style>
+
+
+/* general styles */
+.menu, .menu ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: -29px;
+}
+.menu {
+    height: 58px;
+}
+.menu li {
+    background: -moz-linear-gradient(#934b98, #934b98);
+    background: -ms-linear-gradient(#934b98, #934b98);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #934b98), color-stop(100%, #934b98));
+    background: -webkit-linear-gradient(#87cefa, #87cefa);
+    background: -o-linear-gradient(#934b98, #934b98);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#934b98', endColorstr='#934b98');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#934b98', endColorstr='#934b98')";
+    background: linear-gradient(#934b98, #934b98);
+
+
+    min-width: 160px;
+}
+.menu > li {
+    display: block;
+    float: right;
+    position: relative;
+}
+.menu > li:first-child {
+    border-radius: 5px 0 0;
+}
+.menu a {
+
+    color: white;
+    display: block;
+    font-size: 13px;
+    line-height: 40px;
+    padding: 0 25px;
+    text-decoration: none;
+}
+
+/* onhover styles */
+.menu li:hover {
+    background-color: #87cefa;
+    background: -moz-linear-gradient(#87cefa, #87cefa);
+    background: -ms-linear-gradient(#87cefa, #87cefa);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #87cefa), color-stop(100%, #87cefa));
+    background: -webkit-linear-gradient(#87cefa, #87cefa);
+    background: -o-linear-gradient(#87cefa, #87cefa);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#87cefa', endColorstr='#87cefa');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#87cefa', endColorstr='#87cefa')";
+    background: linear-gradient(#87cefa, #87cefa);
+
+
+}
+.menu li:hover > a {
+    border-radius: 5px 0 0 0;
+
+    color: black;
+}
+
+/* submenu styles */
+.submenu {
+    left: 0;
+    max-height: 0;
+    position: absolute;
+    top: 100%;
+    z-index: 0;
+
+    -webkit-perspective: 400px;
+    -moz-perspective: 400px;
+    -ms-perspective: 400px;
+    -o-perspective: 400px;
+    perspective: 400px;
+}
+.submenu li {
+    opacity: 0;
+
+    -webkit-transform: rotateY(90deg);
+    -moz-transform: rotateY(90deg);
+    -ms-transform: rotateY(90deg);
+    -o-transform: rotateY(90deg);
+    transform: rotateY(90deg);
+
+    -webkit-transition: opacity .4s, -webkit-transform .5s;
+    -moz-transition: opacity .4s, -moz-transform .5s;
+    -ms-transition: opacity .4s, -ms-transform .5s;
+    -o-transition: opacity .4s, -o-transform .5s;
+    transition: opacity .4s, transform .5s;
+}
+.menu .submenu li:hover a {
+    border-radius: 0;
+    color: #ffffff;
+}
+.menu > li:hover .submenu, .menu > li:focus .submenu {
+    max-height: 2000px;
+    z-index: 10;
+}
+.menu > li:hover .submenu li, .menu > li:focus .submenu li {
+    opacity: 1;
+
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none;
+}
+
+/* CSS3 delays for transition effects */
+.menu li:hover .submenu li:nth-child(1) {
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -ms-transition-delay: 0s;
+    -o-transition-delay: 0s;
+    transition-delay: 0s;
+}
+.menu li:hover .submenu li:nth-child(2) {
+    -webkit-transition-delay: 50ms;
+    -moz-transition-delay: 50ms;
+    -ms-transition-delay: 50ms;
+    -o-transition-delay: 50ms;
+    transition-delay: 50ms;
+}
+.menu li:hover .submenu li:nth-child(3) {
+    -webkit-transition-delay: 100ms;
+    -moz-transition-delay: 100ms;
+    -ms-transition-delay: 100ms;
+    -o-transition-delay: 100ms;
+    transition-delay: 100ms;
+}
+.menu li:hover .submenu li:nth-child(4) {
+    -webkit-transition-delay: 150ms;
+    -moz-transition-delay: 150ms;
+    -ms-transition-delay: 150ms;
+    -o-transition-delay: 150ms;
+    transition-delay: 150ms;
+}
+
+.submenu li:nth-child(1) {
+    -webkit-transition-delay: 350ms;
+    -moz-transition-delay: 350ms;
+    -ms-transition-delay: 350ms;
+    -o-transition-delay: 350ms;
+    transition-delay: 350ms;
+}
+.submenu li:nth-child(2) {
+    -webkit-transition-delay: 300ms;
+    -moz-transition-delay: 300ms;
+    -ms-transition-delay: 300ms;
+    -o-transition-delay: 300ms;
+    transition-delay: 300ms;
+}
+.submenu li:nth-child(3) {
+    -webkit-transition-delay: 250ms;
+    -moz-transition-delay: 250ms;
+    -ms-transition-delay: 250ms;
+    -o-transition-delay: 250ms;
+    transition-delay: 250ms;
+}
+.submenu li:nth-child(4) {
+    -webkit-transition-delay: 200ms;
+    -moz-transition-delay: 200ms;
+    -ms-transition-delay: 200ms;
+    -o-transition-delay: 200ms;
+    transition-delay: 200ms;
+}
+
+
+
+
+</style>
+<div class="small-container">
+
+    <div class="row row-2">
+        <h2>All Products</h2>
+
+
+        <div  id="main" role="main">
+        <ul class="menu">
+
+                <li><a href="{%url 'store:products'  %}?query=products">Default Sorting</a>
+                    <ul class="submenu">
+                        <li><a href="{%url 'store:products'  %}?query=price">Sorting by price</a></li>
+                        <li><a href="">Sorting by rate</a></li>
+                        {%for category in categories%}
+                        <li><a href="?query={{category.id}}">{{category}}</a></li>
+                        {%endfor%}
+
+                    </ul>
+                </li>
+        </ul>
+        </div>
+
+    </div>
+    <div class="row">
+
+        {%for product in products %}
+        <div class="col-4">
+            <a href="{% url 'store:product-detail' product.id %}"> <img src="{{product.image.url}}"></a>
+            <h4><a href="{% url 'store:product-detail' product.id %}">{{product.title }}</a> </h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+
+            </div>
+            <p>${{product.price}}</p>
+        </div>
+        {%endfor%}
+    </div>
+
+    <div >
+        <ul class="pagination justify-content-center">
+        {% if products.has_previous %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ products.previous_page_number }}">Previous</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+          </li>
+        {% endif %}
+        {% for i in products.paginator.page_range %}
+          {% if products.number == i %}
+            <li class="page-item active" aria-current="page">
+              <span class="page-link">
+                {{ i }}
+                <span class="sr-only">(current)</span>
+              </span>
+            </li>
+          {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+          {% endif %}
+        {% endfor %}
+        {% if products.has_next %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ products.next_page_number }}">Next</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Next</a>
+          </li>
+        {% endif %}
+
+
+
+
+
+    </div>
+</div>
+{% endblock %}

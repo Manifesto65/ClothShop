@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    #no{
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 20px;
+    margin-right: 10px;
+    border: 1px solid #ff523b;
+}
+.cbtn{
+width: 114px;
+    height: 44px;
+    background: coral;
+    border-radius: 10px 9px 10px 10px;
+}
+
+
+</style>
+<div class="small-container single-product">
+
+    <div class="row">
+        <div class="col-2">
+            <img src="{{product.image.url}}" width="100%" id="ProductImg">
+
+            <div class="small-img-row">
+                <div class="small-img-col">
+                    <img src="{{product.image.url}}" width="100%" class="small-img">
+                </div>
+                {% for img in product_images%}
+                <div class="small-img-col">
+                    <img src="{{img.images.url}}" width="100%" class="small-img">
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+        <div class="col-2">
+            <p>Home / {{product.category}}</p>
+            <h1>{{product.title}}</h1>
+            <h4>${{product.price}}</h4>
+
+
+            <form method="post">
+                {% csrf_token %}
+
+                <input type="number" name="quantity" id="no" value="0">
+                <input type="submit" class="cbtn" value="Add to Cart">
+            </form>
+
+            <h3>Product Details <i class="fa fa-indent"></i></h3>
+            <br>
+            <p>{{product.description}}</p>
+        </div>
+    </div>
+</div>
+
+<!------title------>
+
+<div class="small-container">
+    <div class="row row-2">
+        <h2>Related Products</h2>
+        <p>View More</p>
+    </div>
+</div>
+
+<!----products---->
+<div class="small-container">
+
+    <div class="row">
+        <div class="col-4">
+            <img src="photos/img3.jpg">
+            <h4>Trouser</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+
+            </div>
+            <p>$1250.00</p>
+        </div>
+        <div class="col-4">
+            <img src="photos/img4.jpg">
+            <h4>Crop T-shirt</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+
+            </div>
+            <p>$1050.00</p>
+        </div>
+        <div class="col-4">
+            <img src="photos/img5.jpg">
+            <h4>Printed Full T-shirt</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+
+            </div>
+            <p>$1550.00</p>
+        </div>
+        <div class="col-4">
+            <img src="photos/img6.jpg">
+            <h4>Plain T-shirt</h4>
+            <div class="rating">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+
+            </div>
+            <p>$850.00</p>
+        </div>
+    </div>
+</div>
+
+
+<!------js for product gallery------>
+
+<script>
+      var ProductImg = document.getElementById("ProductImg");
+      var SmallImg = document.getElementsByClassName("small-img");
+
+      SmallImg[0].onclick = function()
+      {
+          ProductImg.src = SmallImg[0].src;
+      }
+      SmallImg[1].onclick = function()
+      {
+          ProductImg.src = SmallImg[1].src;
+      }
+      SmallImg[2].onclick = function()
+      {
+          ProductImg.src = SmallImg[2].src;
+      }
+      SmallImg[3].onclick = function()
+      {
+          ProductImg.src = SmallImg[3].src;
+      }
+
+</script>
+
+
+{% endblock %}

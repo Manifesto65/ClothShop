@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+from django.urls import reverse_lazy
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -128,5 +128,5 @@ MEDIA_URL = '/image/download/'
 MEDIA_ROOT = BASE_DIR
 
 
-
+LOGOUT_REDIRECT_URL = "homepage"
 AUTH_USER_MODEL = "store.User"

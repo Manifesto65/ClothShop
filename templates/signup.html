@@ -1,0 +1,55 @@
+
+{% extends 'base.html' %}
+
+{% load static%}
+{%block content%}
+<section class="Form " style="background: darkslategrey;">
+    <div class="container" id="ac">
+        <div class="row no-gutters" id="frow">
+            <div class="col-lg-5">
+                <img src = "{%static 'images/cover4.jpg'%}" class="img-fluid l-img"  alt="image">
+            </div>
+             <div class="col-lg-7  px-5 pt-5">
+                 <div class="logo">
+                <img src ="{%static 'images/logo.png'%}" width ='40' >
+                <p>ClothShop</p>
+                </div>
+                 <h4 class="mt-3" >Create your account</h4>
+
+                 <form method="post">
+                     {% csrf_token %}
+                     <div class="form-row">
+                         <div class="col-lg-7">
+                             <input type="text" placeholder="Username" value="{{value.user}}" name="user" class="form-control my-3 p-4">
+                         </div>
+                     </div>
+                     <div class="form-row">
+                         <div class="col-lg-7">
+                             <input type="email" placeholder="email" name="email" class="form-control my-3 p-4">
+                         </div>
+                     </div>
+                     <div class="form-row">
+                         <div class="col-lg-7">
+                             <input type="password" placeholder="*********" name="pass" class="form-control my-3 p-4">
+                         </div>
+                     </div>
+                     <div class="form-row">
+                         <div class="col-lg-7">
+                             <button type="submit" class="fbtn mt-3 mb-5 ">Signup</button>
+                         </div>
+                     </div>
+                     {%if error%}
+                     <p class="text-danger">{{error}}</p>
+
+                     {% endif %}
+
+                     <p style="font-size:17px">Already have an account? <a style="font-size:15px" href="{% url 'login' %}">Login</a></p>
+
+                 </form>
+             </div>
+
+        </div>
+
+    </div>
+</section>
+{% endblock %}

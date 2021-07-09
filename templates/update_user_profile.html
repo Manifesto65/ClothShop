@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    .update_container{
+    margin: 150px 20px 21px;
+    }
+
+    #u_update input {
+    width: 109px;
+    height: 30px;
+    padding:0px;
+    margin: 10px 0;
+    border: 1px solid #acc;
+    }
+</style>
+
+
+
+
+
+<div class="update_container">
+    <h2 style="color:#472fce">Update Profile</h2>
+    <hr>
+<form id="u_update" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+    {{form.as_p}}
+
+    <input type="submit">
+</form>
+    </div>
+{% endblock %}
