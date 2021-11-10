@@ -3,12 +3,11 @@ from django.db.models.signals import post_save
 from django.contrib.auth.models import AbstractUser
 
 
-
 # Create your models here.
 class User(AbstractUser):
     dob = models.DateField(blank=True, null=True)
-    avatar = models.ImageField(upload_to="uploads/avatar" , blank=True, null=True)
-    address = models.CharField(max_length=20, blank=True,null=True)
+    avatar = models.ImageField(upload_to="uploads/avatar", blank=True, null=True)
+    address = models.CharField(max_length=20, blank=True, null=True)
 
     @staticmethod
     def get_user_by_id(username):
@@ -72,3 +71,13 @@ def user_created_signal(sender, instance, created, **kwargs):
 
 
 post_save.connect(user_created_signal, sender=User)
+
+
+# class Order(models.Model):
+#     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     quantity= models.IntegerField(default=1)
+#     price= models.FloatField()
+#     address = models.CharField(max_length=100)
+#     phone = models.CharField(max_length=100)
+#     date = models.DateTimeField(auto_now_add=True)

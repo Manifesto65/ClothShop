@@ -1,4 +1,165 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>CartPage</h1>
-{% endblock %}
+{% load cart%}
+<style>
+    #quan a{
+    background: coral;
+    padding: 4px 5px 1px 5px;
+    }
+
+</style>
+<div class="small-container cart-page">
+    <table>
+        <thead>
+        <tr>
+            <th>Products</th>
+            <th>Quantity</th>
+            <th>Discount per item</th>
+            <th>Sub Total</th>
+        </tr>
+        </thead>
+
+
+        {% for product in products%}
+        <tr>
+            <td>
+                <div class="cart-info">
+                    <img src="{{product.image.url}}">
+                    <div>
+                        <p> {{product.title}}</p>
+                        <small id="price">Price:${{product.price}}</small>
+                        <br>
+                        <a style="cursor:pointer ;color:red"  class="remove" id="{{product.id}}">Remove</a>
+                    </div>
+                </div>
+            </td>
+
+            <td>
+                <div id="quan" style="padding: 10px;">
+                    <a class="minus" id="{{product.id}}"><i class='fas fa-minus' style='font-size:17px'></i></a>
+                    <span style="padding: 5px;  font-size:18px">{{product|product_quantity:request.session.cart}}</span>
+
+                    <a class="plus" id="{{product.id}}"><i class='fas fa-plus' style='font-size:17px'></i></a>
+                </div>
+
+            </td>
+            <!--                    <input type="number" min="0"  name="quantity" id="num" value="{{product|product_quantity:request.session.cart}}"></td>-->
+
+            <td>${{product.discount_price}}</td>
+            <td>${{product|sub_total:request.session.cart}}</td>
+        </tr>
+
+        {% endfor %}
+
+
+    </table>
+
+    <div class="total-price">
+        <table>
+            <tr>
+                <td>Subtotal</td>
+                <td id="stotal">${{products|total:request.session.cart}}</td>
+            </tr>
+
+            <tr>
+                <td>Tax</td>
+                <td>$35.00</td>
+            </tr>
+            <tr>
+                <td>Total</td>
+                <td id="gtotal">${{products|grand_total:request.session.cart}}</td>
+            </tr>
+        </table>
+    </div>
+
+<div class="text-right mt-2">
+    <!-- Button trigger modal -->
+<a href="{% url 'store:checkout' %}"><button type="button" class="btn"  style="background:#28a745;color:white">
+  Place Order
+</button></a>
+
+
+
+</div>
+
+
+</div>
+
+
+
+<script>
+$(".minus").click(function(){
+ var p_id = $(this).attr("id").toString();
+ var eml = this.parentNode.children[1]
+ var sub = this.parentNode.parentNode.parentNode.children[3]
+ console.log(sub)
+ $.ajax({
+    type:"GET",
+    url:"{%url 'store:minus_quantity' %}",
+    data:{
+        p_id : p_id
+       },
+        success: function(data){
+        eml.innerText = data.quantity
+        sub.innerText = "$"+data.sub_total
+        document.getElementById("stotal").innerText = "$"+data.total
+        document.getElementById("gtotal").innerText = "$"+data.grand_total
+
+        }
+        })
+
+ })
+
+$(".plus").click(function(){
+ var p_id = $(this).attr("id").toString();
+ var eml = this.parentNode.children[1]
+ var sub = this.parentNode.parentNode.parentNode.children[3]
+
+ $.ajax({
+    type:"GET",
+    url:"{%url 'store:plus_quantity' %}",
+    data:{
+        p_id : p_id
+       },
+        success: function(data){
+
+        eml.innerText = data.quantity
+        sub.innerText = "$"+data.sub_total
+        document.getElementById("stotal").innerText = "$"+data.total
+        document.getElementById("gtotal").innerText = "$"+data.grand_total
+
+
+        }
+        })
+
+ })
+
+ $(".remove").click(function(){
+ var p_id = $(this).attr("id").toString();
+ var eml = this.parentNode.children[1]
+ var b = this.parentNode.parentNode
+ var sub = this.parentNode.parentNode.parentNode.children[3]
+ console.log(sub)
+ $.ajax({
+    type:"GET",
+    url:"{%url 'store:remove_product' %}",
+    data:{
+        p_id : p_id
+       },
+        success: function(data){
+
+
+        document.getElementById("stotal").innerText = "$"+data.total
+        document.getElementById("gtotal").innerText = "$"+data.grand_total
+        b.parentNode.parentNode.remove()
+
+
+        }
+        })
+
+ })
+
+
+</script>
+
+{%endblock%}

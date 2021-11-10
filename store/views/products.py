@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from store.models import Product, Category, ProductImage
 from django.core.paginator import Paginator
 from django.views import View
@@ -40,16 +40,31 @@ def products(request):
 
 class ProductDetail(View):
     def get(self, request, pk):
+        cart = request.session.get('cart')
+        if cart:
+            pass
+        else:
+            cart = {}
+            request.session['cart'] = cart
+
         product = Product.objects.get(pk=pk)
         product_images = ProductImage.objects.filter(product=product)
-        print(product_images)
         data = {
             'product': product,
             'product_images': product_images
         }
         return render(request, "product-details.html", data)
 
-    def post(self, request,pk):
+    def post(self, request, pk):
         quantity = request.POST.get('quantity')
+        product = pk
+        cart = request.session.get('cart')
+        if cart:
+            cart[product] = quantity
+        else:
 
-        return render(request,"cart.html")
+            cart[product] = quantity
+
+        request.session['cart'] = cart
+
+        return redirect("store:product-detail", pk=pk)

@@ -25,11 +25,13 @@ from store.views.userprofile import userprofile,UserUpdateView
 
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name="homepage"),
-    path('login', Login.as_view(), name="login"),
+    path('login/', Login.as_view(), name="login"),
     path('logout', logout, name="logout"),
+
     path('userprofile/<int:user_id>', userprofile, name="profile"),
     path('update_user/<int:pk>', UserUpdateView.as_view(), name="update_user"),
     path('signup', Signup.as_view(), name="signup"),

@@ -347,7 +347,7 @@ input :focus{
 /*----cart items----*/
 
 .cart-page{
-    margin: 80px auto;
+    margin: 93px auto;
 }
 table{
     width: 100%;
@@ -359,7 +359,7 @@ table{
 }
 th{
     text-align: left;
-    padding: 5px;
+    padding: 12px;
     color: #fff;
     background: #ff523b;
     font-weight: normal;

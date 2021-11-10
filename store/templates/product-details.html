@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load cart %}
 <style>
     #no{
     width: 50px;
@@ -40,13 +41,21 @@ width: 114px;
             <p>Home / {{product.category}}</p>
             <h1>{{product.title}}</h1>
             <h4>${{product.price}}</h4>
+            <h4>Discount :${{product.discount_price}}</h4>
 
 
-            <form method="post">
+            <form  method="post">
                 {% csrf_token %}
+                
+                {% if product|is_in_cart:request.session.cart %}
 
-                <input type="number" name="quantity" id="no" value="0">
+                <input type="number" name="quantity" min="0"  value="{{product|product_quantity:request.session.cart}}">
                 <input type="submit" class="cbtn" value="Add to Cart">
+                {%else%}
+                 <input type="number" name="quantity" min="0" value="{{product|product_quantity:request.session.cart}}">
+                <input type="submit" class="cbtn" value="Add to Cart">
+
+                {%endif%}
             </form>
 
             <h3>Product Details <i class="fa fa-indent"></i></h3>

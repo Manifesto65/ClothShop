@@ -114,7 +114,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+SESSION_SAVE_EVERY_REQUEST = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
@@ -130,3 +130,4 @@ MEDIA_ROOT = BASE_DIR
 
 LOGOUT_REDIRECT_URL = "homepage"
 AUTH_USER_MODEL = "store.User"
+
