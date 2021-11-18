@@ -73,11 +73,11 @@ def user_created_signal(sender, instance, created, **kwargs):
 post_save.connect(user_created_signal, sender=User)
 
 
-# class Order(models.Model):
-#     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-#     quantity= models.IntegerField(default=1)
-#     price= models.FloatField()
-#     address = models.CharField(max_length=100)
-#     phone = models.CharField(max_length=100)
-#     date = models.DateTimeField(auto_now_add=True)
+class Order(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    quantity= models.IntegerField(default=1)
+    price= models.FloatField()
+    address = models.CharField(max_length=100)
+    phone = models.CharField(max_length=100)
+    date = models.DateTimeField(auto_now_add=True)
