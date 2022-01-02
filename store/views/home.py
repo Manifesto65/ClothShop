@@ -3,9 +3,9 @@ from store.models import Product
 
 
 def index(request):
-    latest = Product.objects.filter(is_latest=True)
+    latest = Product.objects.filter(is_latest=True)[:8]
     exclusive = Product.objects.get(is_exclusive=True)
-    featured = Product.objects.filter(is_featured=True)
+    featured = Product.objects.filter(is_featured=True)[:8]
 
     data = {
 
