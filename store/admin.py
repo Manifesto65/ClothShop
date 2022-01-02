@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Product, User, UserProfile,ProductImage
+from .models import Category, Product, User, UserProfile,ProductImage,Order
 from django.forms import Textarea
 from django.db import models
 
@@ -38,4 +38,5 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(User)
+admin.site.register(Order)
 admin.site.register(UserProfile)
