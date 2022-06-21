@@ -22,15 +22,15 @@ class Signup(View):
         def validateUser(user):
             error_message = None
             if not user.username:
-                error_message = 'First name is required'
+                error_message = 'Username is required'
             elif len(user.username) < 3:
-                error_message = 'First  name should be more than 2 letters'
+                error_message = 'Username should be more than 2 letters'
             elif len(user.email) < 5:
                 error_message = 'email should be more than 5 letters'
             elif len(user.password) < 4:
                 error_message = 'password should be more than 2 letters'
             elif user.isExist():
-                error_message = 'Email address already exists'
+                error_message = 'Username already exists'
 
             return error_message
 

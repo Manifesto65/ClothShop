@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container" style="margin-top: 103px; color:chocolate">
+    <h1 class="text-center mb-5">Your Orders</h1>
+    <div class="row">
+
+        <div class="col-sm-8 mb-3">
+              <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">S.No</th>
+          <th scope="col">Image</th>
+          <th scope="col">Product</th>
+          <th scope="col">Price</th>
+          <th scope="col">Date</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total</th>
+          <th scope="col">Status</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for order in orders %}
+        <tr>
+          <td>{{forloop.counter}}</td>
+          <td><img src="{{order.product.image.url}}" class="rounded-circle" style="height:90px" alt="..."></td>
+          <td>{{order.product.title}}</td>
+          <td>{{order.product.price}}</td>
+          <td>{{order.date}}</td>
+          <td>{{order.quantity}}</td>
+          <td>{{order.price}}</td>
+
+            {% if order.status == 'PENDING' %}
+            <td>🕑</td>
+            {% else %}
+            <td>✔</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+
+    </table>
+
+
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+{% endblock %}

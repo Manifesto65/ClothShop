@@ -73,7 +73,7 @@ background-image: linear-gradient(to left, crimson, lime, blue, green,  darkviol
 }
 .col-2{
     flex-basis: 50%;
-    min-width: 374px;
+    min-width: 400px;
 }
 .col-2 img{
     max-width: 100%;

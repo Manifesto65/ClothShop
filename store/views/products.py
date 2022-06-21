@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from store.models import Product, Category, ProductImage
 from django.core.paginator import Paginator
 from django.views import View
+from store.recommender import recommend
 
 
 def products(request):
@@ -48,11 +49,15 @@ class ProductDetail(View):
             request.session['cart'] = cart
 
         product = Product.objects.get(pk=pk)
+        ids = recommend(product.title)
+        recommendations = Product.objects.filter(id__in=ids)
         product_images = ProductImage.objects.filter(product=product)
         data = {
             'product': product,
-            'product_images': product_images
+            'product_images': product_images,
+            'recommendations': recommendations
         }
+        print(recommendations)
         return render(request, "product-details.html", data)
 
     def post(self, request, pk):
@@ -68,3 +73,9 @@ class ProductDetail(View):
         request.session['cart'] = cart
 
         return redirect("store:product-detail", pk=pk)
+
+
+
+
+
+

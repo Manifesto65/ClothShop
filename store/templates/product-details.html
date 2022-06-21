@@ -10,11 +10,44 @@
     margin-right: 10px;
     border: 1px solid #ff523b;
 }
+
+
+.comment-text {
+    font-size: 12px
+}
+
+.fs-12 {
+    font-size: 12px
+}
+
+.shadow-none {
+    box-shadow: none
+}
+
+.name {
+    color: #007bff
+}
+
+.cursor:hover {
+    color: blue
+}
+
+.cursor {
+    cursor: pointer
+}
+
+.textarea {
+    resize: none
+}
 .cbtn{
 width: 114px;
     height: 44px;
     background: coral;
     border-radius: 10px 9px 10px 10px;
+}
+.col-2{
+    flex-basis: 50%;
+    min-width: 50%;
 }
 
 
@@ -65,12 +98,42 @@ width: 114px;
     </div>
 </div>
 
+<!--&lt;!&ndash; Comment&ndash;&gt;-->
+<!--<div class="container mt-5">-->
+<!--    <div class="d-flex justify-content-center row">-->
+<!--        <div class="col-md-8">-->
+<!--            <div class="d-flex flex-column comment-section">-->
+<!--                <div class="bg-white p-2">-->
+<!--                    <div class="d-flex flex-row user-info"><img class="rounded-circle" src="" width="40">-->
+<!--                        <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">Marry Andrews</span><span class="date text-black-50">Shared publicly - Jan 2020</span></div>-->
+<!--                    </div>-->
+<!--                    <div class="mt-2">-->
+<!--                        <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bg-white">-->
+<!--                    <div class="d-flex flex-row fs-12">-->
+<!--                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>-->
+<!--                        <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span></div>-->
+<!--                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="bg-light p-2">-->
+<!--                    <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40"><textarea class="form-control ml-1 shadow-none textarea"></textarea></div>-->
+<!--                    <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" type="button">Post comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+
 <!------title------>
 
 <div class="small-container">
     <div class="row row-2">
         <h2>Related Products</h2>
-        <p>View More</p>
     </div>
 </div>
 
@@ -78,9 +141,11 @@ width: 114px;
 <div class="small-container">
 
     <div class="row">
+        {%for r_product in recommendations%}
         <div class="col-4">
-            <img src="photos/img3.jpg">
-            <h4>Trouser</h4>
+
+            <a href="{% url 'store:product-detail' r_product.id %}"> <img src="{{r_product.image.url}}"></a>
+            <h4><a href="{% url 'store:product-detail' r_product.id %}">{{r_product.title }}</a></h4>
             <div class="rating">
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
@@ -89,47 +154,10 @@ width: 114px;
                 <i class="fa fa-star-o"></i>
 
             </div>
-            <p>$1250.00</p>
-        </div>
-        <div class="col-4">
-            <img src="photos/img4.jpg">
-            <h4>Crop T-shirt</h4>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
+            <p>${{r_product.price}}</p>
 
-            </div>
-            <p>$1050.00</p>
         </div>
-        <div class="col-4">
-            <img src="photos/img5.jpg">
-            <h4>Printed Full T-shirt</h4>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
-
-            </div>
-            <p>$1550.00</p>
-        </div>
-        <div class="col-4">
-            <img src="photos/img6.jpg">
-            <h4>Plain T-shirt</h4>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
-
-            </div>
-            <p>$850.00</p>
-        </div>
+           {%endfor %}
     </div>
 </div>
 

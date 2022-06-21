@@ -19,7 +19,7 @@ class User(AbstractUser):
             return False
 
     def isExist(self):
-        if User.objects.filter(email=self.email):
+        if User.objects.filter(username=self.username):
             return True
 
 
@@ -73,7 +73,12 @@ def user_created_signal(sender, instance, created, **kwargs):
 post_save.connect(user_created_signal, sender=User)
 
 
+
 class Order(models.Model):
+    STATUS_CHOICES = [
+        ('P', 'PENDING'),
+        ('C', 'COMPLETED'),
+    ]
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     quantity= models.IntegerField(default=1)
@@ -81,3 +86,8 @@ class Order(models.Model):
     address = models.CharField(max_length=100)
     phone = models.CharField(max_length=100)
     date = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=30,default='PENDING',choices=STATUS_CHOICES)
+    objects = models.Manager()
+
+
+# class Comment(models.Model):
